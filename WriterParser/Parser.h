@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "Serializable.h"
 #include <string>
 
@@ -9,6 +10,16 @@ private:
 	std::string m_sData{};
 	std::size_t m_nOffset = 0;
 
+public:
+	bool hasData() const noexcept
+	{
+		return m_sData.size() > m_nOffset;
+	}
+};
+
+
+class Parser : public BaseParser
+{
 public:
 	Parser() noexcept = default;
 
@@ -29,14 +40,16 @@ public:
 		m_sData = str;
 		m_nOffset = 0;
 	}
-
+		
 	std::string getContent() const noexcept
 	{
 		return m_sData;
 	}
+};
+
 
 	std::size_t size() const noexcept
-	{
+{
 		return content_size() - offset();
 	}
 
