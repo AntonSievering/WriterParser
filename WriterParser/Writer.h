@@ -16,6 +16,14 @@ public:
 		m_sData = sData;
 	}
 
+private:
+	template <class T>
+	void writeSerializable(const Serializable<T> &objectData) noexcept
+	{
+		for (size_t i = 0; i < objectData.size(); i++)
+			m_sData.push_back(objectData.data[i]);
+	}
+
 public:
 	std::string getContent() const noexcept
 	{
@@ -29,15 +37,13 @@ public:
 
 public:
 	template <class T>
-	void writeSerializable(const Serializable<T> &objectData) noexcept
-	{
-		for (size_t i = 0; i < objectData.size(); i++)
-			m_sData.push_back(objectData.data[i]);
-	}
-
-	template <class T>
 	void write(const T &object) noexcept
 	{
 		writeSerializable(Serializable<T>(object));
+	}
+
+	void write_string(const std::string &str) noexcept
+	{
+		m_sData.append(str);
 	}
 };

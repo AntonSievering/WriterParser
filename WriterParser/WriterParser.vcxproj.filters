@@ -22,5 +22,8 @@
     <ClInclude Include="Serializable.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,9 +1,12 @@
 #include "Writer.h"
+#include "Parser.h"
 #include <iostream>
 
 int main()
 {
 	Writer writer;
-	writer.write(65 << 8 | 97);
-	std::cout << writer.getContent() << std::endl;
+	writer.write(1234567890ui64);
+
+	Parser parser = Parser(writer.getContent());
+	std::cout << parser.parse<uint64_t>() << std::endl;
 }

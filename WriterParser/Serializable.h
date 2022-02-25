@@ -12,7 +12,7 @@ struct Serializable
 public:
 	Serializable() noexcept = default;
 
-	Serializable(const T &obj)
+	Serializable(const T &obj) noexcept
 	{
 		object = obj;
 	}
